@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"github.com/caarlos0/env/v11"
+	_ "github.com/joho/godotenv/autoload"
+
 	"log"
 	"net/http"
 )
@@ -24,6 +27,7 @@ func main() {
 		}
 	})
 
+	fmt.Println("listening on 8080")
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		return
 	}
