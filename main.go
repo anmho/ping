@@ -1,13 +1,24 @@
 package main
 
-import "net/http"
+import (
+	"github.com/caarlos0/env/v11"
+	"log"
+	"net/http"
+)
+
+type Config struct {
+}
 
 func main() {
+	var config Config
+	if err := env.Parse(&config); err != nil {
+		log.Fatalln(err)
+	}
 
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /ping", func(w http.ResponseWriter, r *http.Request) {
-		write, err := w.Write([]byte("pong"))
+		_, err := w.Write([]byte("pong"))
 		if err != nil {
 			return
 		}
