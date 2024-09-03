@@ -21,7 +21,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /hello", func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte("pong"))
+		_, err := w.Write([]byte("world"))
 		if err != nil {
 			return
 		}
